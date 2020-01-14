@@ -80,9 +80,11 @@ $("modal").append($closeButtonElement);
 
 var $nameElement=$("h1");
 $nameElement.html(item.name);
+$("modal")append($nameElement);
 
 
 $modalContainer.addClass("is-visible");
+$("modal").append("modalContainer");
 }
 
 function hideModal() {
