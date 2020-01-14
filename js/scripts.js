@@ -1,9 +1,8 @@
 var pokemonRepository =(function(){
   var repository= [];
   var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-//  var ul = document.querySelector(".pokemon-list");
   var $pokemonList =$('ul');
-  var $modalContainer =$("#modal-container");
+  var $modalContainer = $("#modal-container");
 
 //adding new pokemon to var repository//
   function add(pokemon) {
@@ -16,22 +15,14 @@ var pokemonRepository =(function(){
 
 //funcion to add a list for each pokemon object//
     function addListItem(pokemon){
+    var $button = $('<button type="button" class="btn btn-secondary btn-lg btn-block"> '+pokemon.name+' </button>');
     var $li = $('<li></li>');
     $pokemonList.append($li);
-    var $button = $('<button type="button" class="btn btn-secondary"> '+pokemon.name+' </button>');
     $li.append($button);
-    $button.on("click",function(event){
+    $('button').on("click",function(){
     showDetails(pokemon);
   });
 }
-
-//function to show details of each pokemon
-function showDetails(repository){
-pokemonRepository.loadDetails(repository).then(function(){
- showModal(repository);
-});
-}
-
 
 
 //funtion that loads pokemon list from API
@@ -64,78 +55,45 @@ function loadList() {
       item.height = details.height;
       item.weight = details.weight;
       //item.types = Object.keys(details.types);
-   if (details.types.length == 2 ) {
-    item.types = [details.types[0].type.name, details.types[1].type.name];
-    } else {
-   item.types = [details.types[0].type.name];
-    }
+  if (details.types.length == 2 ) {
+  item.types = [details.types[0].type.name, details.types[1].type.name];
+} else {
+ item.types = [details.types[0].type.name];
+
+}
     }).catch(function (error) {
       console.error(error);
    });
   }
 
 
-
 function showModal(item) {
   // Clear all existing modal content
-  $modalContainer.innerHTML = "";
+  $modalContainer.html("");
 
-  var modal = document.createElement("div");
-  modal.classList.add("modal");
+  var modal = $("<div></div>");
+  $("<div></div>").addClass("modal");
 
-  // Add the new modal content
-  var closeButtonElement = document.createElement("button");
-  closeButtonElement.classList.add("modal-close");
-  closeButtonElement.innerText = "Close";
-  closeButtonElement.addEventListener("click", hideModal);
+ var $closeButtonElement = $('<button type ="button" class="modal-close">'+close+'</button>');
+$("<button></button>").on("click", hideModal());
+$("modal").append($closeButtonElement);
+
+var $nameElement=$("h1");
+$nameElement.html(item.name);
 
 
-var nameElement = document.createElement("h1");
-nameElement.innerText = item.name.toUpperCase();
-
-var imageElement = document.createElement("img");
-imageElement.src = item.imageUrl;
-imageElement.classList.add("modal-img");
-
-var heightElement = document.createElement("p");
-heightElement.innerText = "Height: " + item.height + "m";
-
-var weightElement = document.createElement("p");
-weightElement.innerText = "Weight: " + item.weight + "kg";
-
-var typesElement = document.createElement("p");
-typesElement.innerText = "Type(s): " + item.types;
-
-modal.appendChild(closeButtonElement);
-modal.appendChild(nameElement);
-modal.appendChild(imageElement);
-modal.appendChild(heightElement);
-modal.appendChild(weightElement);
-modal.appendChild(typesElement);
-$modalContainer.appendChild(modal);
-
-$("#modalContainer").addClass("is-visible");
+$modalContainer.addClass("is-visible");
 }
 
 function hideModal() {
-  $("#modalContainer").remove("is-visible");
+  $modalContainer.removeClass("is-visible")
 }
 
-
-//window.addEventListener("keydown", (e) => {
-//  if (e.key === "Escape" && $modalContainer.classList.contains("is-visible")) {
-  //  hideModal();
-//  }
-//});
-
-//$modalContainer.addEventListener("click", (e) => {
-  // Since this is also triggered when clicking INSIDE the modal container,
-  // We only want to close if the user clicks directly on the overlayvar target = e.target  if (target === $modalContainer) {
-  //  hideModal();
-  //}
-//});
-
-
+function showDetails(repository){
+pokemonRepository.loadDetails(repository).then(function(){
+showModal(repository);
+});
+}
 
 return {
 add: add,
