@@ -1,38 +1,34 @@
 var pokemonRepository =(function(){
-  var repository= [];
-  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-//  var ul = document.querySelector(".pokemon-list");
-  var $pokemonList =$('ul');
-  var $modalContainer =$("#modal-container");
+var repository= [];
+var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+var $pokemonList =$('ul');
+var ul =$(".pokemon-list");
+var $modalContainer = $("#modal-container");
 
 //adding new pokemon to var repository//
-  function add(pokemon) {
+function add(pokemon) {
   repository.push(pokemon);
   }
-
   function getAll() {
-  return repository;
+    return repository;
  }
 
 //funcion to add a list for each pokemon object//
-    function addListItem(pokemon){
+  function addListItem(pokemon){
     var $li = $('<li></li>');
     $pokemonList.append($li);
-    var $button = $('<button type="button" class="btn btn-secondary"> '+pokemon.name+' </button>');
+    var $button = $('<button type="button" class="btn btn-secondary btn-lg btn-block"> '+pokemon.name+' </button>');
     $li.append($button);
-    $button.on("click",function(event){
-    showDetails(pokemon);
+    $button.on("click",function(){
+      showDetails(pokemon);
   });
 }
 
-//function to show details of each pokemon
 function showDetails(repository){
-pokemonRepository.loadDetails(repository).then(function(){
- showModal(repository);
-});
+  pokemonRepository.loadDetails(repository).then(function(){
+    showModal(repository);
+  });
 }
-
-
 
 //funtion that loads pokemon list from API
 function loadList() {
@@ -64,76 +60,59 @@ function loadList() {
       item.height = details.height;
       item.weight = details.weight;
       //item.types = Object.keys(details.types);
-   if (details.types.length == 2 ) {
-    item.types = [details.types[0].type.name, details.types[1].type.name];
-    } else {
-   item.types = [details.types[0].type.name];
-    }
+  if (details.types.length == 2 ) {
+  item.types = [details.types[0].type.name, details.types[1].type.name];
+} else {
+ item.types = [details.types[0].type.name];
+
+}
     }).catch(function (error) {
       console.error(error);
    });
   }
 
 
-
 function showModal(item) {
-  // Clear all existing modal content
-  $modalContainer.innerHTML = "";
+var modal = $("<div></div>");
+modal.addClass('modal');
 
-  var modal = document.createElement("div");
-  modal.classList.add("modal");
-
-  // Add the new modal content
-  var closeButtonElement = document.createElement("button");
-  closeButtonElement.classList.add("modal-close");
-  closeButtonElement.innerText = "Close";
-  closeButtonElement.addEventListener("click", hideModal);
+var $closeButtonElement = $('<button type ="button" class="modal-close"></button>');
+$closeButtonElement.addClass("modal-close").text('close').on("click",hideModal);
 
 
-var nameElement = document.createElement("h1");
-nameElement.innerText = item.name.toUpperCase();
+var $nameElement = $("h1.pokemonName");
+$nameElement.html(item.name);
 
-var imageElement = document.createElement("img");
-imageElement.src = item.imageUrl;
-imageElement.classList.add("modal-img");
+var $heightElement =$('<p class="pokemonHeight"></p>');
+$heightElement.html('Height: ' + item.height);
 
-var heightElement = document.createElement("p");
-heightElement.innerText = "Height: " + item.height + "m";
+var $weightElement =$('<p class="pokemonWeight"></p>');
+$weightElement.html('Weight: ' + item.weight);
 
-var weightElement = document.createElement("p");
-weightElement.innerText = "Weight: " + item.weight + "kg";
+var $imageElement = $('#pokemonImg');
+$imageElement.attr('src', item.imageUrl);
 
-var typesElement = document.createElement("p");
-typesElement.innerText = "Type(s): " + item.types;
+var $imageElement =$('<img src ="' + item.imageUrl +'">');
+$imageElement.addClass("modal-img");
 
-modal.appendChild(closeButtonElement);
-modal.appendChild(nameElement);
-modal.appendChild(imageElement);
-modal.appendChild(heightElement);
-modal.appendChild(weightElement);
-modal.appendChild(typesElement);
-$modalContainer.appendChild(modal);
 
-$("#modalContainer").addClass("is-visible");
+
+modal.append($nameElement);
+modal.append($imageElement);
+modal.append($weightElement);
+modal.append($heightElement);
+modal.append($closeButtonElement);
+$modalContainer.append(modal);
+
+
+$modalContainer.addClass("is-visible");
 }
 
 function hideModal() {
-  $("#modalContainer").remove("is-visible");
+ $modalContainer.removeClass("is-visible")
 }
 
 
-//window.addEventListener("keydown", (e) => {
-//  if (e.key === "Escape" && $modalContainer.classList.contains("is-visible")) {
-  //  hideModal();
-//  }
-//});
-
-//$modalContainer.addEventListener("click", (e) => {
-  // Since this is also triggered when clicking INSIDE the modal container,
-  // We only want to close if the user clicks directly on the overlayvar target = e.target  if (target === $modalContainer) {
-  //  hideModal();
-  //}
-//});
 
 
 
