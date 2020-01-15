@@ -117,18 +117,18 @@ function hideModal() {
 
 
 return {
-add: add,
-getAll: getAll,
-addListItem: addListItem,
-loadList: loadList,
-loadDetails: loadDetails,
-showModal:showModal,
-hideModal:hideModal,
-};
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showModal:showModal,
+    hideModal:hideModal,
+  };
 })();
 
 pokemonRepository.loadList().then(function(){
-pokemonRepository.getAll().forEach(function(pokemon){
-pokemonRepository.addListItem(pokemon);
+  pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
  });
 });
