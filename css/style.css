@@ -1,75 +1,61 @@
 body {
-  text-align: center;
-  padding: 50px;
-  font-family: 'Roboto Mono', monospace;
-  ;
-  background-color: #2F2FA2;
-  color: #99738E;
+	text-align: center;
+	padding: auto;
+	font-family: 'Roboto Mono', monospace;
+	background-color: #5c5cf2;
+	color: #99738e;
 }
 
-.navbar-brand {
-  color: #242582;
-  font-size: 4em;
-  font-weight: bolder;
+.navbar-expand {
+	color: #242582;
+	font-size: 2em;
+	font-weight: bolder;
 }
 
 h1 {
-  text-align: center;
-  color: #039dfc;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 50px;
+	text-align: center;
+	color: #039dfc;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 30px;
 }
 
 h5 {
-  color: black;
-  font-size: 3em;
-  text-transform: capitalize;
+	color: black;
+	font-size: 3em;
+	text-transform: capitalize;
 }
 
 li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 20px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 20px;
 }
 
 .pokemonImage {
-  float: right;
+	float: right;
 }
 
-.btn-primary, .btn-primary:active, .btn-primary:visited {
-  background: #99738E;
-  border-color: #99738E;
-  text-transform: capitalize;
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited {
+	background: #99738e;
+	border-color: #99738e;
+	text-transform: capitalize;
 }
 
 .btn-primary:hover {
-  background-color: #553D67;
-  border-color: #553D67;
+	background-color: #553d67;
+	border-color: #553d67;
 }
 
 .btn-primary:focus {
-  background-color: #553D67;
-  border-color: #553D67;
-}
-
-.btn-outline-success {
-  color: #F64C72;
-  border-color: #F64C72;
-}
-
-.btn-outline-success:hover {
-  background-color: #F64C72;
-  border-color: #F64C72;
-}
-
-.btn-outline-success:active {
-  background-color: #F64C72;
-  border-color: #F64C72;
+	background-color: #553d67;
+	border-color: #553d67;
 }
