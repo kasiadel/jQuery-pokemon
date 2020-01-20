@@ -14,9 +14,8 @@ body {
 
 h1 {
 	text-align: center;
-	color: #039dfc;
+	color: #d7dcdf;
 	font-weight: bold;
-	font-style: italic;
 	font-size: 30px;
 }
 
@@ -44,18 +43,16 @@ ul {
 
 .btn-primary,
 .btn-primary:active,
-.btn-primary:visited {
-	background: #99738e;
-	border-color: #99738e;
-	text-transform: capitalize;
+.btn-primary:visited,
+.btn-primary:focus {
+	background-color: #86808d;
+	border-color: #86808d;
 }
 
 .btn-primary:hover {
-	background-color: #553d67;
-	border-color: #553d67;
+	background-color: #333233;
+	border-color: #333233;
 }
-
-.btn-primary:focus {
-	background-color: #553d67;
-	border-color: #553d67;
+#header {
+	background: url(https://images.unsplash.com/photo-1518932945647-7a1c969f8be2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60);
 }
