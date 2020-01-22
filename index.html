@@ -18,14 +18,14 @@
 			src="https://kit.fontawesome.com/f12967dd11.js"
 			crossorigin="anonymous"
 		></script>
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="dist/style.min.css" />
 		<title>Simple JS App</title>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-dark fixed-top" style="background: darkblue;">
+		<nav id="mainNavbar" class="navbar navbar-dark fixed-top" style="background: darkblue;">
 			<div class="container">
-				<a href="" class="navbar-brand"
+				<a href="" class="navbar-brand text-wrap"
 					><i class="fas fa-binoculars mr-2"></i>Find your favourite Pokemon</a
 				>
 				<form class="form-inline">
@@ -39,8 +39,8 @@
 				</form>
 			</div>
 		</nav>
-		<section id="header" class="jumbotron text-center">
-			<h1 class="display-3">POKEDEX!</h1>
+		<section id="header" class="jumbotron">
+			<h1 class="display-3  d-none d-lg-inline">POKEDEX!</h1>
 			
 		</section>
 
@@ -106,6 +106,6 @@
 			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 			crossorigin="anonymous"
 		></script>
-		<script src="js/scripts.js"></script>
+		<script src="dist/scripts.min.js"></script>
 	</body>
 </html>
