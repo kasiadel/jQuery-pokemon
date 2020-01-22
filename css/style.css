@@ -3,7 +3,7 @@ body {
 	padding: auto;
 	font-family: 'Roboto Mono', monospace;
 	background-color: #5c5cf2;
-	color: #99738e;
+	color: black;
 }
 
 .navbar-expand {
@@ -13,10 +13,7 @@ body {
 }
 
 h1 {
-	text-align: center;
-	color: #d7dcdf;
-	font-weight: bold;
-	font-size: 30px;
+	color: white;
 }
 
 h5 {
@@ -54,5 +51,13 @@ ul {
 	border-color: #333233;
 }
 #header {
-	background: url(https://images.unsplash.com/photo-1518932945647-7a1c969f8be2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60);
+	background: url(https://images.unsplash.com/photo-1518932945647-7a1c969f8be2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60)
+		center center / cover no-repeat;
+}
+
+@media (max-width: 1200px) {
+	h1 {
+		font-weight: bold;
+		font-size: 3rem;
+	}
 }
