@@ -15,7 +15,12 @@ var pokemonRepository = (function() {
 	//funcion to add a list for each pokemon object//
 	function addListItem(pokemon) {
 		var listItem = $(
-			'<button type="button" class="btn btn-primary btn-lg btn-block"  data-toggle="modal" data-target="#pokemon-modal"></button>'
+			<button
+				type="button"
+				class="btn btn-primary btn-lg btn-block"
+				data-toggle="modal"
+				data-target="#pokemon-modal"
+			></button>
 		);
 		listItem.text(pokemon.name);
 		$pokemonList.append(listItem);
@@ -56,11 +61,9 @@ var pokemonRepository = (function() {
 				return responseJSON;
 			})
 			.then(function(details) {
-				// Now we add the details to the item
 				item.imageUrl = details.sprites.front_default;
 				item.height = details.height;
 				item.weight = details.weight;
-				//item.types = Object.keys(details.types);
 				if (details.types.length == 2) {
 					item.types = [details.types[0].type.name, details.types[1].type.name];
 				} else {
@@ -75,7 +78,6 @@ var pokemonRepository = (function() {
 	//Modal display details about pokemon : img, height ,weight
 	function showDetails(pokemon) {
 		pokemonRepository.loadDetails(pokemon).then(function() {
-			//creating modal
 			var modal = $('.modal-body');
 			var pokemonName = $('.modal-title').text(pokemon.name);
 			var pokemonHeight = $('<p class="pokemonHeight"></p>').text(
