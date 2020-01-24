@@ -2,8 +2,11 @@ body {
 	text-align: center;
 	padding: auto;
 	font-family: 'Roboto Mono', monospace;
-	background-color: #5c5cf2;
 	color: black;
+	background: #4568DC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #B06AB3, #4568DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .navbar-expand {
@@ -11,9 +14,7 @@ body {
 	font-size: 2em;
 	font-weight: bolder;
 }
-.pokemon-list {
-	padding-top: 40px;
-}
+
 h1 {
 	color: white;
 }
@@ -53,8 +54,9 @@ ul {
 	border-color: #333233;
 }
 #header {
-	background: url(https://images.unsplash.com/photo-1530020793049-23eafadd208b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60)
-		center center / cover no-repeat;
+color:white;
+background: #615E65;
+height: 200px;
 }
 
 @media (max-width: 1200px) {
