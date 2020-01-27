@@ -1,7 +1,7 @@
 var pokemonRepository = (function() {
 	var repository = [];
-	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-	var $pokemonList = $('.pokemon-list');
+	var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+	var $pokemonList = $(".pokemon-list");
 
 	//adding new pokemon to var repository//
 	function add(pokemon) {
@@ -24,7 +24,7 @@ var pokemonRepository = (function() {
 		);
 		listItem.text(pokemon.name);
 		$pokemonList.append(listItem);
-		listItem.on('click', function() {
+		listItem.on("click", function() {
 			showDetails(pokemon);
 		});
 	}
@@ -32,7 +32,7 @@ var pokemonRepository = (function() {
 	//funtion that loads pokemon list from API
 	function loadList() {
 		return $.ajax(apiUrl, {
-			dataType: 'json'
+			dataType: "json"
 		})
 			.then(function(responseJSON) {
 				return responseJSON;
@@ -55,7 +55,7 @@ var pokemonRepository = (function() {
 	function loadDetails(item) {
 		var url = item.detailsUrl;
 		return $.ajax(url, {
-			dataType: 'json'
+			dataType: "json"
 		})
 			.then(function(responseJSON) {
 				return responseJSON;
@@ -78,8 +78,8 @@ var pokemonRepository = (function() {
 	//Modal display details about pokemon : img, height ,weight
 	function showDetails(pokemon) {
 		pokemonRepository.loadDetails(pokemon).then(function() {
-			var modal = $('.modal-body');
-			var pokemonName = $('.modal-title').text(pokemon.name);
+			var modal = $(".modal-body");
+			var pokemonName = $(".modal-title").text(pokemon.name);
 			var pokemonHeight = $('<p class="pokemonHeight"></p>').text(
 				`Height: ${pokemon.height} m`
 			);
@@ -90,7 +90,7 @@ var pokemonRepository = (function() {
 				`Types:  ${pokemon.types}`
 			);
 			var pokemonImage = $('<img class="pokemonImage">');
-			pokemonImage.attr('src', pokemon.imageUrl);
+			pokemonImage.attr("src", pokemon.imageUrl);
 
 			//removes previous modal once clicked next one pokemon name
 			if (modal.children().length) {
@@ -105,11 +105,11 @@ var pokemonRepository = (function() {
 	}
 
 	$(document).ready(function() {
-		$('#search').on('keyup', function() {
+		$("#search").on("keyup", function() {
 			var value = $(this)
 				.val()
 				.toLowerCase();
-			$('.btn-primary').filter(function() {
+			$(".btn-primary").filter(function() {
 				$(this).toggle(
 					$(this)
 						.text()
@@ -129,7 +129,7 @@ var pokemonRepository = (function() {
 	};
 })();
 
-pokemonRepository.loadList().then(function() {
+pokemonRepository.loadList().then(function {
 	pokemonRepository.getAll().forEach(function(pokemon) {
 		pokemonRepository.addListItem(pokemon);
 	});
